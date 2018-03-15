@@ -24,21 +24,21 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Łakoć.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Zestawienie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Automat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Produkt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Baton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Łakoć.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Zestawienie.cpp">
@@ -48,6 +48,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Automat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Produkt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Baton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

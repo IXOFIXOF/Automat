@@ -3,12 +3,12 @@
 
 #include "stdafx.h"
 #include "Automat.h"
-using namespace std;
 
 int main()
 {
-
-	cin.get();
+	
+	CAutomat oAutomat;
+	oAutomat.Init();
     return 0;
 }
 

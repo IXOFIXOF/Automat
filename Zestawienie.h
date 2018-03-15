@@ -3,6 +3,7 @@ class CZestawienie
 {
 public:
 	CZestawienie();
+
 	~CZestawienie();
 };
 
