@@ -9,6 +9,7 @@ int main()
 	
 	CAutomat oAutomat;
 	oAutomat.Init();
+	cin.get();
     return 0;
 }
 
