@@ -4,11 +4,14 @@
 class CProdukt
 {
 public:
+	
 	CProdukt();
-	~CProdukt();
+   virtual ~CProdukt();
+	virtual void UstalCene() = 0;
+	virtual void UstalNazwe() = 0;
+	virtual void DodajSpecyficzneDane() = 0;
+	virtual void PodajStan() = 0;
 protected:
-	virtual void UstalCene(int iCena) = 0;
-	virtual void UstalNazwe(string sNazwa) = 0;
 	int m_iCena;
 	string m_Nazwa;
 };

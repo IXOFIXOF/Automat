@@ -10,7 +10,8 @@ public:
 	void Init();
 	~CAutomat();
 private:
-
 	vector< CProdukt* > ListaProduktow;
+	void DodajProdukt();
+
 };
 
