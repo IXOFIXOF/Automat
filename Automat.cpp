@@ -5,21 +5,22 @@
 void CAutomat::Init()
 {
 	bool bKontynuuj = true;
-	while (bKontynuuj)
-	{
+	
 		unsigned wybor = 0;
 		cout << "Wymierz co chcesz zrobiæ:" << endl;
 		cout << "1. Stan automatu" << endl;
 		cout << "2. Dodaj produkt" << endl;
-		cout << "3. Usuñ produkt" << endl;
+		cout << "3. Usun produkt" << endl;
 		cout << "4. Edytuj produkt" << endl;
 		cout << "5.Wyjscie" << endl;
+	while (bKontynuuj)
+	{
 		cin >> wybor;
 		switch (wybor)
 		{
 		case 1:
 		{
-			ListaProduktow[0]->PodajStan();
+			StanAutomatu();
 			break;
 		}
 		case 2:
@@ -29,11 +30,12 @@ void CAutomat::Init()
 		}
 		case 3:
 		{
-			delete ListaProduktow[0];
+			UsunProdukt();
 			break;
 		}
 		case 4:
 		{
+			EdytujDane();
 			break;
 		}
 		case 5:
@@ -62,14 +64,48 @@ void CAutomat::DodajProdukt()
 		break;
 	}
 	default:
+		return;
 		break;
 	}
-	
-	ListaProduktow[0]->UstalCene();
-	ListaProduktow[0]->UstalNazwe();
-	ListaProduktow[0]->DodajSpecyficzneDane();
+	it = ListaProduktow.end() - 1;
+	(*it)->UstalCene();
+	(*it)->UstalNazwe();
+	(*it)->UstalSpecyficzneDane();
 }
-
+void CAutomat::StanAutomatu()
+{
+	int licznik = 1;
+	it = ListaProduktow.begin();
+	while (it != ListaProduktow.end())
+	{
+		cout << licznik << ": "; (*it)->DaneOProdukcie();
+		it++;
+		licznik++;
+	}
+	if (licznik == 1)
+	{
+		cout << "Brak produktow w automacie\n";
+	}
+}
+void CAutomat::UsunProdukt()
+{
+	StanAutomatu();
+	cout << "Podaj nr. produktu: ";
+	int iUsun = 0;
+	cin >> iUsun;
+	delete ListaProduktow[iUsun- 1];
+	ListaProduktow.erase(ListaProduktow.begin() + iUsun - 1);
+}
+void CAutomat::EdytujDane()
+{
+	StanAutomatu();
+	cout << "Podaj nr. produktu: ";
+	int iEdytuj = 0;
+	cin >> iEdytuj;
+	ListaProduktow[iEdytuj - 1]->UstalCene();
+	ListaProduktow[iEdytuj - 1]->UstalNazwe();
+	ListaProduktow[iEdytuj - 1]->UstalSpecyficzneDane();
+}
 CAutomat::CAutomat()
 {
 }

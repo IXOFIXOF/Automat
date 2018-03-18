@@ -11,7 +11,11 @@ public:
 	~CAutomat();
 private:
 	vector< CProdukt* > ListaProduktow;
+	vector< CProdukt*> ::iterator it;
 	void DodajProdukt();
+	void StanAutomatu();
+	void UsunProdukt();
+	void EdytujDane();
 
 };
 
