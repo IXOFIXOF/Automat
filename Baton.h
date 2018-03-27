@@ -9,7 +9,8 @@ public:
 	CBaton();
 	~CBaton();
 	void UstalSpecyficzneDane();
-	void DaneOProdukcie();
+	string DaneOProdukcie();
+	int PobierzCene();
 
 };
 

@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Automat.h"
-#include "Baton.h"
 
 void CAutomat::Init()
 {
@@ -12,7 +11,8 @@ void CAutomat::Init()
 		cout << "2. Dodaj produkt" << endl;
 		cout << "3. Usun produkt" << endl;
 		cout << "4. Edytuj produkt" << endl;
-		cout << "5.Wyjscie" << endl;
+		cout << "5. Wyjscie" << endl;
+		cout << "6. Zapisz stan automatu " << endl;
 	while (bKontynuuj)
 	{
 		cin >> wybor;
@@ -41,6 +41,11 @@ void CAutomat::Init()
 		case 5:
 		{
 			return;
+		}
+		case 6:
+		{
+			oZestawienie.ZapiszStan( false );
+			break;
 		}
 		default:
 			cout << "Dokona³es nieprawidlowego wyboru" << endl;
@@ -78,7 +83,7 @@ void CAutomat::StanAutomatu()
 	it = ListaProduktow.begin();
 	while (it != ListaProduktow.end())
 	{
-		cout << licznik << ": "; (*it)->DaneOProdukcie();
+		cout << licznik << ": " << (*it)->DaneOProdukcie();
 		it++;
 		licznik++;
 	}
@@ -108,7 +113,9 @@ void CAutomat::EdytujDane()
 }
 CAutomat::CAutomat()
 {
+	oZestawienie.Init(&ListaProduktow);
 }
 CAutomat::~CAutomat()
 {
+	oZestawienie.ZapiszStan();
 }

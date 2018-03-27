@@ -1,7 +1,9 @@
 #pragma once
+#include "stdafx.h"
 #include <vector>
 #include "Produkt.h"
-#include "stdafx.h"
+#include "Baton.h"
+#include "Zestawienie.h"
 class CAutomat
 {
 
@@ -16,6 +18,6 @@ private:
 	void StanAutomatu();
 	void UsunProdukt();
 	void EdytujDane();
-
+	CZestawienie oZestawienie;
 };
 
