@@ -9,10 +9,11 @@ void CAutomat::Init()
 		cout << "Wymierz co chcesz zrobiæ:" << endl;
 		cout << "1. Stan automatu" << endl;
 		cout << "2. Dodaj produkt" << endl;
-		cout << "3. Usun produkt" << endl;
+		cout << "3. Usun uprodukt" << endl;
 		cout << "4. Edytuj produkt" << endl;
 		cout << "5. Wyjscie" << endl;
 		cout << "6. Zapisz stan automatu " << endl;
+		cout << "7. Stan automatu z danego dnia " << endl;
 	while (bKontynuuj)
 	{
 		cin >> wybor;
@@ -46,6 +47,10 @@ void CAutomat::Init()
 		{
 			oZestawienie.ZapiszStan( false );
 			break;
+		}
+		case 7:
+		{
+
 		}
 		default:
 			cout << "Dokona³es nieprawidlowego wyboru" << endl;

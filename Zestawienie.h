@@ -13,7 +13,8 @@ class CZestawienie
 public:
 	CZestawienie();
 	~CZestawienie();
-	void PobierzStan();
+	string RaportDoOdczytu();
+	void PobierzStan(vector<CProdukt*>* vec, string NameFile = "");
 	void ZapiszStan( bool NadpisaniePliku = true );
 	void Init(vector<CProdukt*>* vec);
 

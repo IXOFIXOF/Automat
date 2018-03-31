@@ -12,8 +12,16 @@ void CZestawienie::Init(vector<CProdukt*>* vec)
 {
 	ListaProduktow = vec;
 }
-void CZestawienie::PobierzStan()
+string CZestawienie::RaportDoOdczytu()
 {
+	string NameFile;
+	return NameFile;
+}
+void CZestawienie::PobierzStan(vector<CProdukt*>* vec, string NameFile /* = ""*/)
+{
+	ifstream Odczyt;
+//	NameFile.empty() ? Odczyt.open(NAZWA_PLIKU) : Odczyt.open( NameFile );
+
 
 }
 void CZestawienie::ZapiszStan(bool NadpisaniePliku /*= true*/)
@@ -47,7 +55,7 @@ void CZestawienie::ZapiszStan(bool NadpisaniePliku /*= true*/)
 			it++;
 		}
 		zapis << "W automacie jest: " << SumaProduktow << " przedmiotow\n";
-		zapis << "Kwota w automacie na dzien sporzadzenia raportu to: " << LacznaKwota << ".\n";
+		zapis << "Saldo w automacie na dzien sporzadzenia raportu to: " << LacznaKwota << ".\n";
 	}
 
 	zapis.close();
