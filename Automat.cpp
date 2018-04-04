@@ -52,6 +52,7 @@ void CAutomat::Init()
 		{
 			oZestawienie.PobierzStan( oZestawienie.RaportDoOdczytu());
 			StanAutomatu();
+			oZestawienie.PobierzStan();// Poniewa¿ musimy przywróciæ stan automatu z ostatnio zapisanego pliku;
 			break;
 		}
 		default:

@@ -21,7 +21,7 @@ string CBaton::DaneOProdukcie()
           + "Cena: " + to_string( m_iCena ) + "\n";
 }
 
-void CBaton::UstalSpecyficzneDane()
+void CBaton::UstalSpecyficzneDane(void* Dane /*= nullptr*/)
 {
 
 }

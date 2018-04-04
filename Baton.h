@@ -8,7 +8,7 @@ public:
 
 	CBaton();
 	~CBaton();
-	void UstalSpecyficzneDane();
+	void UstalSpecyficzneDane( void* Dane = nullptr );
 	string DaneOProdukcie();
 	int PobierzCene();
 

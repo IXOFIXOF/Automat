@@ -36,25 +36,32 @@ string CZestawienie::RaportDoOdczytu()
 }
 void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 {
+	ListaProduktow->clear();
+	bool CosZnaleziono = false;
 	ifstream Odczyt;
-	NameFile.empty() ? Odczyt.open(NAZWA_PLIKU) : Odczyt.open( NameFile );
+	NameFile.empty() ? Odczyt.open(NAZWA_PLIKU) : Odczyt.open(NameFile);
 	regex rBaton("Baton: (.+), Cena: (.+)");
 	string linia;
-	getline(Odczyt, linia);
-	smatch wynik;
-	if (regex_search(linia, wynik, rBaton))
-	{
-		ListaProduktow->push_back(new CBaton);
-		it = ListaProduktow->end() - 1;
-		(*it)->UstalSpecyficzneDane();
-	}
 
-	cout << wynik[0].str().c_str() << endl;
-	cout<< wynik[1].str().c_str() <<endl;
-	cout << atoi(wynik[2].str().c_str()) << endl;
-	(*it)->UstalCene(atoi(wynik[2].str().c_str()));
-	(*it)->UstalNazwe(wynik[1].str().c_str());
-	
+	while (getline(Odczyt, linia))
+	{
+		CosZnaleziono = false;
+
+		smatch wynik;
+		if (regex_search(linia, wynik, rBaton))
+		{
+			ListaProduktow->push_back(new CBaton);
+			it = ListaProduktow->end() - 1;
+			CosZnaleziono = true;
+		}
+
+		if (CosZnaleziono)
+		{
+			(*it)->UstalCene(atoi(wynik[2].str().c_str()));
+			(*it)->UstalNazwe(wynik[1].str());
+		}
+
+	}
 
 
 	Odczyt.close();

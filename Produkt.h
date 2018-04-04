@@ -9,7 +9,7 @@ public:
     virtual ~CProdukt();
     void UstalCene( int Cena = 0);
 	void UstalNazwe( string Nazwa = "");
-	virtual void UstalSpecyficzneDane() = 0;
+	virtual void UstalSpecyficzneDane( void* Dane = nullptr ) = 0;
 	virtual string DaneOProdukcie() = 0;
 	virtual int PobierzCene() = 0;
 protected:
