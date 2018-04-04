@@ -7,8 +7,8 @@ public:
 	
 	CProdukt();
     virtual ~CProdukt();
-    void UstalCene();
-	void UstalNazwe();
+    void UstalCene( int Cena = 0);
+	void UstalNazwe( string Nazwa = "");
 	virtual void UstalSpecyficzneDane() = 0;
 	virtual string DaneOProdukcie() = 0;
 	virtual int PobierzCene() = 0;

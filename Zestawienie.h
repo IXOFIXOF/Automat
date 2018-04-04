@@ -14,12 +14,13 @@ public:
 	CZestawienie();
 	~CZestawienie();
 	string RaportDoOdczytu();
-	void PobierzStan(vector<CProdukt*>* vec, string NameFile = "");
+	void PobierzStan(string NameFile = "");
 	void ZapiszStan( bool NadpisaniePliku = true );
 	void Init(vector<CProdukt*>* vec);
 
 private:
 	string UstalNazwePliku();
 	vector< CProdukt* >* ListaProduktow;
+	vector< CProdukt*> ::iterator it;
 };
 

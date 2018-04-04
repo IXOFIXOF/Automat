@@ -50,7 +50,9 @@ void CAutomat::Init()
 		}
 		case 7:
 		{
-
+			oZestawienie.PobierzStan( oZestawienie.RaportDoOdczytu());
+			StanAutomatu();
+			break;
 		}
 		default:
 			cout << "Dokona³es nieprawidlowego wyboru" << endl;
@@ -119,6 +121,7 @@ void CAutomat::EdytujDane()
 CAutomat::CAutomat()
 {
 	oZestawienie.Init(&ListaProduktow);
+	oZestawienie.PobierzStan();
 }
 CAutomat::~CAutomat()
 {

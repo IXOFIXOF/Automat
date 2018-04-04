@@ -12,7 +12,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include <Windows.h>
+#include <regex>
 
 
 using namespace std;

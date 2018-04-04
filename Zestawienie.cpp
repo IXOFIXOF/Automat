@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Zestawienie.h"
-
+#include "Baton.h"
+#include "Produkt.h"
 
 CZestawienie::CZestawienie()
 {
@@ -14,15 +15,49 @@ void CZestawienie::Init(vector<CProdukt*>* vec)
 }
 string CZestawienie::RaportDoOdczytu()
 {
-	string NameFile;
-	return NameFile;
+	vector< string > NamesFiles;
+	WIN32_FIND_DATA file;
+	HANDLE search_handle = FindFirstFile("*.txt", &file);
+	int iWybor = 0;
+	if (search_handle)
+	{
+		int iLicznik = 1;
+		do
+		{
+			std::wcout<<iLicznik<<". "<< file.cFileName << std::endl;
+			NamesFiles.push_back(file.cFileName);
+			iLicznik++;
+		} while (FindNextFile(search_handle, &file));
+		FindClose(search_handle);
+	}
+	cout << "Wybierz plik: ";
+	cin >> iWybor;
+	return NamesFiles[iWybor - 1];
 }
-void CZestawienie::PobierzStan(vector<CProdukt*>* vec, string NameFile /* = ""*/)
+void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 {
 	ifstream Odczyt;
-//	NameFile.empty() ? Odczyt.open(NAZWA_PLIKU) : Odczyt.open( NameFile );
+	NameFile.empty() ? Odczyt.open(NAZWA_PLIKU) : Odczyt.open( NameFile );
+	regex rBaton("Baton: (.+), Cena: (.+)");
+	string linia;
+	getline(Odczyt, linia);
+	smatch wynik;
+	if (regex_search(linia, wynik, rBaton))
+	{
+		ListaProduktow->push_back(new CBaton);
+		it = ListaProduktow->end() - 1;
+		(*it)->UstalSpecyficzneDane();
+	}
+
+	cout << wynik[0].str().c_str() << endl;
+	cout<< wynik[1].str().c_str() <<endl;
+	cout << atoi(wynik[2].str().c_str()) << endl;
+	(*it)->UstalCene(atoi(wynik[2].str().c_str()));
+	(*it)->UstalNazwe(wynik[1].str().c_str());
+	
 
 
+	Odczyt.close();
 }
 void CZestawienie::ZapiszStan(bool NadpisaniePliku /*= true*/)
 {

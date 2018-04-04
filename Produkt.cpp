@@ -10,18 +10,33 @@ CProdukt::CProdukt()
 CProdukt::~CProdukt()
 {
 }
-void CProdukt::UstalCene()
+void CProdukt::UstalCene( int Cena /* = 0 */)
 {
-	int iCena = 0;
-	cout << "Podaj cene: ";
-	cin >> iCena;
-	m_iCena = iCena;
+	if (Cena != 0)
+	{
+		m_iCena = Cena;
+	}
+	else
+	{
+		int iCena = 0;
+		cout << "Podaj cene: ";
+		cin >> iCena;
+		m_iCena = iCena;
+	}
+
 }
-void CProdukt::UstalNazwe()
+void CProdukt::UstalNazwe( string Nazwa /* "" */ )
 {
-	string sNazwa;
-	cout << "Podaj nazwe: ";
-	cin.ignore();
-	getline(cin, sNazwa);
-	m_sNazwa = sNazwa;
+	if (!Nazwa.empty())
+	{
+		m_sNazwa = Nazwa;
+	}
+	else
+	{
+		string sNazwa;
+		cout << "Podaj nazwe: ";
+		cin.ignore();
+		getline(cin, sNazwa);
+		m_sNazwa = sNazwa;
+	}
 }
