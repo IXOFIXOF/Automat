@@ -21,6 +21,10 @@ void CProdukt::UstalCene( int Cena /* = 0 */)
 		int iCena = 0;
 		cout << "Podaj cene: ";
 		cin >> iCena;
+		if (!cin) 
+		{
+			throw this;
+		}
 		m_iCena = iCena;
 	}
 
@@ -37,6 +41,10 @@ void CProdukt::UstalNazwe( string Nazwa /* "" */ )
 		cout << "Podaj nazwe: ";
 		cin.ignore();
 		getline(cin, sNazwa);
+		if (!cin)
+		{
+			throw this;
+		}
 		m_sNazwa = sNazwa;
 	}
 }

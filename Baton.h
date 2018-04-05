@@ -12,5 +12,7 @@ public:
 	string DaneOProdukcie();
 	int PobierzCene();
 
+private:
+	string Smak;
 };
 

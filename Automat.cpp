@@ -4,60 +4,82 @@
 void CAutomat::Init()
 {
 	bool bKontynuuj = true;
-	
-		unsigned wybor = 0;
-		cout << "Wymierz co chcesz zrobiæ:" << endl;
-		cout << "1. Stan automatu" << endl;
-		cout << "2. Dodaj produkt" << endl;
-		cout << "3. Usun uprodukt" << endl;
-		cout << "4. Edytuj produkt" << endl;
-		cout << "5. Wyjscie" << endl;
-		cout << "6. Zapisz stan automatu " << endl;
-		cout << "7. Stan automatu z danego dnia " << endl;
+
+	unsigned wybor = 0;
+	cout << "Wymierz co chcesz zrobiæ:" << endl;
+	cout << "1. Stan automatu" << endl;
+	cout << "2. Dodaj produkt" << endl;
+	cout << "3. Usun uprodukt" << endl;
+	cout << "4. Edytuj produkt" << endl;
+	cout << "5. Wyjscie" << endl;
+	cout << "6. Zapisz stan automatu " << endl;
+	cout << "7. Stan automatu z danego dnia " << endl;
 	while (bKontynuuj)
 	{
-		cin >> wybor;
-		switch (wybor)
+		try
 		{
-		case 1:
-		{
-			StanAutomatu();
-			break;
+			cin >> wybor;
+			switch (wybor)
+			{
+			case 1:
+			{
+				StanAutomatu();
+				break;
+			}
+			case 2:
+			{
+				DodajProdukt();
+				oZestawienie.ZapiszStan();
+				break;
+			}
+			case 3:
+			{
+				UsunProdukt();
+				oZestawienie.ZapiszStan();
+				break;
+			}
+			case 4:
+			{
+				EdytujDane();
+				oZestawienie.ZapiszStan();
+				break;
+			}
+			case 5:
+			{
+				return;
+			}
+			case 6:
+			{
+				oZestawienie.ZapiszStan(false);
+				break;
+			}
+			case 7:
+			{
+				oZestawienie.PobierzStan(oZestawienie.RaportDoOdczytu());
+				StanAutomatu();
+				oZestawienie.PobierzStan();// Poniewa¿ musimy przywróciæ stan automatu z ostatnio zapisanego pliku;
+				break;
+			}
+			default:
+				cout << "Dokona³es nieprawidlowego wyboru" << endl;
+				break;
+			}
 		}
-		case 2:
+		catch (CProdukt* e)
 		{
-			DodajProdukt();
-			break;
+			it = find(ListaProduktow.begin(), ListaProduktow.end(), e);
+			ListaProduktow.erase(it);
+			delete e;
+			cout << "Blednie wprowadzone dane, sprobuj ponownie.\n";
+			cin.clear();
+			cin.ignore();
 		}
-		case 3:
+		catch(exception* e)
 		{
-			UsunProdukt();
-			break;
-		}
-		case 4:
-		{
-			EdytujDane();
-			break;
-		}
-		case 5:
-		{
-			return;
-		}
-		case 6:
-		{
-			oZestawienie.ZapiszStan( false );
-			break;
-		}
-		case 7:
-		{
-			oZestawienie.PobierzStan( oZestawienie.RaportDoOdczytu());
-			StanAutomatu();
-			oZestawienie.PobierzStan();// Poniewa¿ musimy przywróciæ stan automatu z ostatnio zapisanego pliku;
-			break;
-		}
-		default:
-			cout << "Dokona³es nieprawidlowego wyboru" << endl;
-			break;
+			delete e;
+			cout << "Blednie wprowadzone dane, sprobuj ponownie.\n";
+			cin.clear();
+			cin.ignore();
 		}
 	}
 
@@ -68,7 +90,10 @@ void CAutomat::DodajProdukt()
 	cout << "1. Baton" << endl;
 	unsigned wybor = 0;
 	cin >> wybor;
-	
+	if (!cin)
+	{
+		throw new exception;
+	}
 	switch (wybor)
 	{
 	case 1:
@@ -106,6 +131,10 @@ void CAutomat::UsunProdukt()
 	cout << "Podaj nr. produktu: ";
 	int iUsun = 0;
 	cin >> iUsun;
+	if (!cin)
+	{
+		throw new exception;
+	}
 	delete ListaProduktow[iUsun- 1];
 	ListaProduktow.erase(ListaProduktow.begin() + iUsun - 1);
 }
@@ -115,6 +144,10 @@ void CAutomat::EdytujDane()
 	cout << "Podaj nr. produktu: ";
 	int iEdytuj = 0;
 	cin >> iEdytuj;
+	if (!cin)
+	{
+		throw new exception;
+	}
 	ListaProduktow[iEdytuj - 1]->UstalCene();
 	ListaProduktow[iEdytuj - 1]->UstalNazwe();
 	ListaProduktow[iEdytuj - 1]->UstalSpecyficzneDane();

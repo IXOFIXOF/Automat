@@ -32,6 +32,10 @@ string CZestawienie::RaportDoOdczytu()
 	}
 	cout << "Wybierz plik: ";
 	cin >> iWybor;
+	if (!cin)
+	{
+		throw new exception;
+	}
 	return NamesFiles[iWybor - 1];
 }
 void CZestawienie::PobierzStan( string NameFile /* = ""*/)
@@ -40,7 +44,7 @@ void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 	bool CosZnaleziono = false;
 	ifstream Odczyt;
 	NameFile.empty() ? Odczyt.open(NAZWA_PLIKU) : Odczyt.open(NameFile);
-	regex rBaton("Baton: (.+), Cena: (.+)");
+	regex rBaton("Baton: (.+), Cena: (.+), Smak: (.+)");
 	string linia;
 
 	while (getline(Odczyt, linia))
@@ -59,6 +63,7 @@ void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 		{
 			(*it)->UstalCene(atoi(wynik[2].str().c_str()));
 			(*it)->UstalNazwe(wynik[1].str());
+			(*it)->UstalSpecyficzneDane(&(wynik[3].str()));
 		}
 
 	}
