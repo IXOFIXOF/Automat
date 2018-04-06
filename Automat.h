@@ -3,6 +3,8 @@
 #include <vector>
 #include "Produkt.h"
 #include "Baton.h"
+#include "Woda.h"
+#include "Napoj.h"
 #include "Zestawienie.h"
 class CAutomat
 {

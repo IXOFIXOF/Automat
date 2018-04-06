@@ -6,7 +6,7 @@ void CAutomat::Init()
 	bool bKontynuuj = true;
 
 	unsigned wybor = 0;
-	cout << "Wymierz co chcesz zrobiæ:" << endl;
+	cout << "Wymierz co chcesz zrobic:" << endl;
 	cout << "1. Stan automatu" << endl;
 	cout << "2. Dodaj produkt" << endl;
 	cout << "3. Usun uprodukt" << endl;
@@ -88,6 +88,8 @@ void CAutomat::DodajProdukt()
 {
 	cout << "Jaki produkt?" << endl;
 	cout << "1. Baton" << endl;
+	cout << "2. Woda" << endl;
+	cout << "3. Napoj" << endl;
 	unsigned wybor = 0;
 	cin >> wybor;
 	if (!cin)
@@ -101,13 +103,23 @@ void CAutomat::DodajProdukt()
 		ListaProduktow.push_back(new CBaton);
 		break;
 	}
+	case 2:
+	{
+		ListaProduktow.push_back(new CWoda);
+		break;
+	}
+	case 3:
+	{
+		ListaProduktow.push_back(new CNapoj);
+		break;
+	}
 	default:
 		return;
 		break;
 	}
 	it = ListaProduktow.end() - 1;
-	(*it)->UstalCene();
 	(*it)->UstalNazwe();
+	(*it)->UstalCene();
 	(*it)->UstalSpecyficzneDane();
 }
 void CAutomat::StanAutomatu()
@@ -148,8 +160,8 @@ void CAutomat::EdytujDane()
 	{
 		throw new exception;
 	}
-	ListaProduktow[iEdytuj - 1]->UstalCene();
 	ListaProduktow[iEdytuj - 1]->UstalNazwe();
+	ListaProduktow[iEdytuj - 1]->UstalCene();
 	ListaProduktow[iEdytuj - 1]->UstalSpecyficzneDane();
 }
 CAutomat::CAutomat()

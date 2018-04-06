@@ -36,6 +36,12 @@
     <ClInclude Include="Baton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Woda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Napoj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +60,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Baton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Woda.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Napoj.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

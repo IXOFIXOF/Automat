@@ -147,6 +147,8 @@
   <ItemGroup>
     <ClInclude Include="Automat.h" />
     <ClInclude Include="Baton.h" />
+    <ClInclude Include="Napoj.h" />
+    <ClInclude Include="Woda.h" />
     <ClInclude Include="Zestawienie.h" />
     <ClInclude Include="Produkt.h" />
     <ClInclude Include="stdafx.h" />
@@ -156,6 +158,8 @@
     <ClCompile Include="Automat.cpp" />
     <ClCompile Include="Baton.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Napoj.cpp" />
+    <ClCompile Include="Woda.cpp" />
     <ClCompile Include="Zestawienie.cpp" />
     <ClCompile Include="Produkt.cpp" />
     <ClCompile Include="stdafx.cpp">

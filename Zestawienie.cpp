@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Zestawienie.h"
+#include "Napoj.h"
+#include "Woda.h"
 #include "Baton.h"
 #include "Produkt.h"
 
@@ -45,6 +47,8 @@ void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 	ifstream Odczyt;
 	NameFile.empty() ? Odczyt.open(NAZWA_PLIKU) : Odczyt.open(NameFile);
 	regex rBaton("Baton: (.+), Cena: (.+), Smak: (.+)");
+	regex rWoda("Woda: (.+), Cena: (.+), Gazowana: (.+)");
+	regex rNapoj("Napoj: (.+), Cena: (.+), Pojemnosc: (.+)");
 	string linia;
 
 	while (getline(Odczyt, linia))
@@ -56,14 +60,27 @@ void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 		{
 			ListaProduktow->push_back(new CBaton);
 			it = ListaProduktow->end() - 1;
+			(*it)->UstalSpecyficzneDane(&(wynik[3].str()));
 			CosZnaleziono = true;
 		}
-
+		else if (regex_search(linia, wynik, rWoda))
+		{
+			ListaProduktow->push_back(new CWoda);
+			it = ListaProduktow->end() - 1;
+			(*it)->UstalSpecyficzneDane(&(wynik[3].str()));
+			CosZnaleziono = true;
+		}
+		else if (regex_search(linia, wynik, rNapoj))
+		{
+			ListaProduktow->push_back(new CNapoj);
+			it = ListaProduktow->end() - 1;
+			(*it)->UstalSpecyficzneDane((int*)atoi(wynik[3].str().c_str()));
+			CosZnaleziono = true;
+		}
 		if (CosZnaleziono)
 		{
 			(*it)->UstalCene(atoi(wynik[2].str().c_str()));
 			(*it)->UstalNazwe(wynik[1].str());
-			(*it)->UstalSpecyficzneDane(&(wynik[3].str()));
 		}
 
 	}
