@@ -5,6 +5,7 @@
 #include "Baton.h"
 #include "Woda.h"
 #include "Napoj.h"
+#include "Przekaska.h"
 #include "Zestawienie.h"
 class CAutomat
 {

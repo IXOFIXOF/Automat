@@ -90,6 +90,7 @@ void CAutomat::DodajProdukt()
 	cout << "1. Baton" << endl;
 	cout << "2. Woda" << endl;
 	cout << "3. Napoj" << endl;
+	cout << "4. Przekaska" << endl;
 	unsigned wybor = 0;
 	cin >> wybor;
 	if (!cin)
@@ -111,6 +112,11 @@ void CAutomat::DodajProdukt()
 	case 3:
 	{
 		ListaProduktow.push_back(new CNapoj);
+		break;
+	}
+	case 4:
+	{
+		ListaProduktow.push_back(new CPrzekaska);
 		break;
 	}
 	default:

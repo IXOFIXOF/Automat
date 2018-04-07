@@ -148,6 +148,7 @@
     <ClInclude Include="Automat.h" />
     <ClInclude Include="Baton.h" />
     <ClInclude Include="Napoj.h" />
+    <ClInclude Include="Przekaska.h" />
     <ClInclude Include="Woda.h" />
     <ClInclude Include="Zestawienie.h" />
     <ClInclude Include="Produkt.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Baton.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Napoj.cpp" />
+    <ClCompile Include="Przekaska.cpp" />
     <ClCompile Include="Woda.cpp" />
     <ClCompile Include="Zestawienie.cpp" />
     <ClCompile Include="Produkt.cpp" />

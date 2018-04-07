@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Zestawienie.h"
+#include "Przekaska.h"
 #include "Napoj.h"
 #include "Woda.h"
 #include "Baton.h"
@@ -49,6 +50,7 @@ void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 	regex rBaton("Baton: (.+), Cena: (.+), Smak: (.+)");
 	regex rWoda("Woda: (.+), Cena: (.+), Gazowana: (.+)");
 	regex rNapoj("Napoj: (.+), Cena: (.+), Pojemnosc: (.+)");
+	regex rPrzekaska("Przekaska: (.+), Cena: (.+)");
 	string linia;
 
 	while (getline(Odczyt, linia))
@@ -77,6 +79,12 @@ void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 			(*it)->UstalSpecyficzneDane((int*)atoi(wynik[3].str().c_str()));
 			CosZnaleziono = true;
 		}
+		else if (regex_search(linia, wynik, rPrzekaska))
+		{
+			ListaProduktow->push_back(new CPrzekaska);
+			it = ListaProduktow->end() - 1;
+			CosZnaleziono = true;
+		}
 		if (CosZnaleziono)
 		{
 			(*it)->UstalCene(atoi(wynik[2].str().c_str()));
@@ -84,8 +92,6 @@ void CZestawienie::PobierzStan( string NameFile /* = ""*/)
 		}
 
 	}
-
-
 	Odczyt.close();
 }
 void CZestawienie::ZapiszStan(bool NadpisaniePliku /*= true*/)
